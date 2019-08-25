@@ -21,5 +21,4 @@ stars.rotation.z = Math.random() * 6;
 stars.scale.setScalar(20 * 10);
 stars.updateMatrix();
 
-
 export var stars = stars;
