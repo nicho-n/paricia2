@@ -18,16 +18,7 @@ function init() {
   camera = new THREE.PerspectiveCamera(25, screen.height / screen.width, 50, 1e7);
   controls = new FlyControls(camera);
   clock = new THREE.Clock();
-
-  renderer.setPixelRatio(window.devicePixelRatio);
-  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-
-  dirLight.position.set(-1, 0, 1).normalize();
-
-  camera.position.z = 6540 * 5;
-  camera.aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
-  camera.updateProjectionMatrix();
-
+  
   scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x000000, 0.00000025);
   scene.add(dirLight);
@@ -36,6 +27,13 @@ function init() {
   scene.add(moon_1);
   scene.add(stars);
 
+  dirLight.position.set(-1, 0, 1).normalize
+
+  renderer.setPixelRatio(window.devicePixelRatio);
+  renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
+  camera.position.z = 6540 * 5;
+  camera.aspect = SCREEN_WIDTH / SCREEN_HEIGHT;
+  camera.updateProjectionMatrix();
 
   renderModel = new RenderPass(scene, camera);
   composer = new EffectComposer(renderer);
