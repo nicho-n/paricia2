@@ -3,7 +3,7 @@ var vertices = [];
 var vertex = new THREE.Vector3();
 var r = 6371, starsGeometry = new THREE.BufferGeometry(), starsMaterial, stars;
 
-for (var i = 0; i < 20000; i++) {
+for (var i = 0; i < 25000; i++) {
   vertex.x = Math.random() * 2 - 1;
   vertex.y = Math.random() * 2 - 1;
   vertex.z = Math.random() * 2 - 1;
