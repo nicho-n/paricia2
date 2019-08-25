@@ -1,7 +1,7 @@
 import * as THREE from "./three/three.module.js";
 import { EffectComposer } from "./jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "./jsm/postprocessing/RenderPass.js";
-import { starsGeometry, starsMaterials } from "./stars.js";
+import { stars } from "./stars.js";
 import { planet_1, planet_1_clouds } from "./planets/planet_1.js";
 import { moon_1 } from "./planets/moon_1.js";
 import { FlyControls } from "./jsm/controls/FlyControls.js";
@@ -34,17 +34,8 @@ function init() {
   scene.add(planet_1);
   scene.add(planet_1_clouds);
   scene.add(moon_1);
+  scene.add(stars);
 
-  //TODO: Make better stars
-  for (var i = 10; i < 30; i++) {
-    var stars = new THREE.Points(starsGeometry[i % 2], starsMaterials[i % 6]);
-    stars.rotation.x = Math.random() * 6;
-    stars.rotation.y = Math.random() * 6;
-    stars.rotation.z = Math.random() * 6;
-    stars.scale.setScalar(i * 10);
-    stars.updateMatrix();
-    scene.add(stars);
-  }
 
   renderModel = new RenderPass(scene, camera);
   composer = new EffectComposer(renderer);
