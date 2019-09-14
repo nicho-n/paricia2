@@ -7,6 +7,5 @@ $ npm install
 $ npm start 
 ```
 
-whoops
 ## Usage:
 In your browser, visit http://localhost:3000
