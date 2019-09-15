@@ -7,14 +7,14 @@ import { moon_1 } from "./planets/moon_1.js";
 import { FlyControls } from "./jsm/controls/FlyControls.js";
 
 var position_indicator = document.getElementById("position_indicator");
-var rotationSpeed = 0.02;
+var rotationSpeed = 0.003;
 var scene, dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
 
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
-  dirLight = new THREE.DirectionalLight(0xffffff, 0.4);
+  dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);
   camera = new THREE.PerspectiveCamera(25, screen.height / screen.width, 50, 1e7);
   controls = new FlyControls(camera);
   clock = new THREE.Clock();
@@ -26,11 +26,11 @@ function init() {
   scene.add(moon_1);
   scene.add(stars);
 
-  dirLight.position.set(-1, 0, 1000).normalize
+  dirLight.position.set(-100, 0, 100).normalize
 
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
-  camera.position.z = 6540 * 5;
+  camera.position.z = 6540 * 3.5;
   camera.aspect = SCREEN_WIDTH / SCREEN_HEIGHT;-
   camera.updateProjectionMatrix();
 
