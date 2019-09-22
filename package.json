@@ -4,7 +4,7 @@
   "description": "An open world, multiplayer space-trading simulator. ## Installation: ``` $ npm install $ npm start  ```",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jasmine",
     "start": "node index.js"
   },
   "repository": {
@@ -18,6 +18,11 @@
   },
   "homepage": "https://github.com/nicho-n/paricia2#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "socket.io": "^2.3.0",
+    "socket.io-client": "^2.3.0"
+  },
+  "devDependencies": {
+    "jasmine": "^3.5.0"
   }
 }
