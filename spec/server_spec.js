@@ -16,7 +16,8 @@ describe('Game Server', function () {
     it('should log in a player', function(done) {
       socket.emit('login', {name: 'testUser'});
       socket.on('login', function(player){
-        expect(player).toEqual({name: 'testUser'});
+        expect(player.name).toEqual('testUser');
+        expect(player.ship.name).toEqual('default');
         done();
       })
     });
