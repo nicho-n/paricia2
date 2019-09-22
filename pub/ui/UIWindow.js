@@ -14,7 +14,7 @@ var UIWindow = function(title, htmlFile, width, height){
         wpFrame.id = this.title;
 
         wpFrame.height = this.height;
-        wpTop.style.width = this.width + "px";
+        wpTop.style.width = this.width;
         wpTop.style.height = "30px";
         wpTop.style.display = "none";
         wpFrame.style.display = "none";
