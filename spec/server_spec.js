@@ -17,7 +17,7 @@ describe('Game Server', function () {
       socket.emit('login', {name: 'testUser'});
       socket.on('login', function(player){
         expect(player).toEqual({name: 'testUser'});
-      done();
+        done();
       })
     });
 });
