@@ -23,6 +23,7 @@
     "socket.io-client": "^2.3.0"
   },
   "devDependencies": {
-    "jasmine": "^3.5.0"
+    "jasmine": "^3.5.0",
+    "jasmine-spec-reporter": "^4.2.1"
   }
 }
