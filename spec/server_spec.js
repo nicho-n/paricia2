@@ -1,6 +1,6 @@
 var io = require('socket.io-client')
-describe('Connecting successfully and disconnecting', function () {
-    var socket;
+describe('Game Server', function () {
+    let socket;
 
     beforeEach(function() {
       socket = io.connect('http://localhost:3000',
