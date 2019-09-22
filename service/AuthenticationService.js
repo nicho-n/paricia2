@@ -1,4 +1,5 @@
 var Player = require("../db/models/Player")
+
 var AuthenticationService = function() {
     this.login = function(login, done) {
         Player.findOne({username: login.username}, function(err, player){
@@ -11,4 +12,5 @@ var AuthenticationService = function() {
         });
     }
 }
+
 module.exports = AuthenticationService;
