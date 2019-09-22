@@ -21,4 +21,14 @@ describe('Game Server', function () {
         done();
       })
     });
+
+    it('should not log in player with incorrect password', function(done) {
+      socket.emit('login', {username: 'testUer', password: "passwor"});
+      socket.on('login', function(player){
+        expect(player).toBeNull();
+        done();
+      });
+
+
+    });
 });
