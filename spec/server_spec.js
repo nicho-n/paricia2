@@ -14,10 +14,10 @@ describe('Game Server', function () {
     });
 
     it('should log in a player', function(done) {
-      socket.emit('login', {name: 'testUser'});
+      socket.emit('login', {username: 'testUser', password: "password"});
       socket.on('login', function(player){
-        expect(player.name).toEqual('testUser');
-        //expect(player.ship.name).toEqual('default');
+        expect(player.username).toEqual('testUser');
+        expect(player.ship).toEqual('default');
         done();
       })
     });

@@ -5,7 +5,8 @@ var SALT_WORK_FACTOR = 10;
 
 var Player = new Schema({
     username: {type: String, unique: true, required: true, index: { unique: true }},
-    password: {type: String, required: true}
+    password: {type: String, required: true},
+    ship: {type: String, default: 'default'}
 });
 
 Player.pre('save', function(done) {
@@ -20,6 +21,13 @@ Player.pre('save', function(done) {
         });
     });
 });
+
+Player.methods.authenticate = function(candidatePassword, done) {
+    bcrypt.compare(candidatePassword, this.password, function(err, success){
+        if (err) return done(error);
+        done(null, success)
+    })
+}
 
 var Players = mongoose.model('Players', Player)
 module.exports = Players;
