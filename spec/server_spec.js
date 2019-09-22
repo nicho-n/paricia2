@@ -3,7 +3,7 @@ describe('Game Server', function () {
     let socket;
 
     beforeEach(function() {
-      socket = io.connect('http://localhost:3000', {'force new connection': true});
+      socket = io.connect('http://localhost:5000', {'force new connection': true});
     });
 
     it('should form a connection', function (done) {

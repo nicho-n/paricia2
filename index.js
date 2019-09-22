@@ -19,8 +19,8 @@ io.on('connection', function(socket) {
   });
 });
 
-server.listen(3000, function() {
-  console.log("Listening on port 3000!");
+server.listen(5000, function() {
+  console.log("Listening on port 5000!");
 });
 
 
