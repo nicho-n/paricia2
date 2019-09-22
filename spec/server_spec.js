@@ -12,4 +12,12 @@ describe('Game Server', function () {
         done();
       })
     });
+
+    it('should log in a player', function(done) {
+      socket.emit('login', {name: 'testUser'});
+      socket.on('login', function(player){
+        expect(player).toEqual({name: 'testUser'});
+      done();
+      })
+    });
 });

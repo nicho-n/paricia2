@@ -7,6 +7,9 @@ var io = require("socket.io")(server);
 app.use(express.static("pub"));
 
 io.on('connection', function(socket) {
+  socket.on('login', function(login) {
+    io.emit('login');
+  })
 });
 
 server.listen(3000, function() {
