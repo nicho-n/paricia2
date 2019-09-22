@@ -24,7 +24,7 @@ Player.pre('save', function(done) {
 
 Player.methods.authenticate = function(candidatePassword, done) {
     bcrypt.compare(candidatePassword, this.password, function(err, success){
-        if (err) return done(error);
+        if (err) return done(err)
         done(null, success)
     })
 }
