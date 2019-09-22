@@ -4,7 +4,7 @@ var http = require("http");
 var server = http.Server(app);
 var io = require("socket.io")(server);
 var mongoose = require("mongoose");
-var authenticationService = require("./service/authenticationService")
+var authenticationService = require("./service/AuthenticationService")
 mongoose.connect('mongodb://localhost/space', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 
