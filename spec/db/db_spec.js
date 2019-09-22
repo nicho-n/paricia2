@@ -1,6 +1,6 @@
 //var mongoose = require('../db/mongoose');
 var mongoose = require("mongoose");
-var Player = require("../db/models/Player")
+var Player = require("../../db/models/Player")
 mongoose.connect('mongodb://localhost/space', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 

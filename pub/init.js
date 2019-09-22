@@ -11,6 +11,7 @@ var rotationSpeed = 0.003;
 var scene, dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
+var loginWindow = new UIWindow("Hello", "login.html", 500, 500);
 
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -25,6 +26,8 @@ function init() {
   scene.add(planet_1);
   scene.add(moon_1);
   scene.add(stars);
+  loginWindow.open();
+  loginWindow.show();
 
   dirLight.position.set(-100, 0, 100).normalize
 
