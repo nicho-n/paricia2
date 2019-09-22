@@ -8,7 +8,7 @@ app.use(express.static("pub"));
 
 io.on('connection', function(socket) {
   socket.on('login', function(login) {
-    io.emit('login');
+    io.emit('login', login);
   })
 });
 
