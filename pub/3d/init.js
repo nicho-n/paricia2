@@ -1,4 +1,4 @@
-import * as THREE from "./threejs/three.module.js";
+import * as THREE from "./three.js/three.module.js";
 import { EffectComposer } from "../jsm/postprocessing/EffectComposer.js";
 import { RenderPass } from "../jsm/postprocessing/RenderPass.js";
 import { stars } from "./scene/stars.js";

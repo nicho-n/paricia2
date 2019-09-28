@@ -2,7 +2,7 @@ import {
   OrthographicCamera,
   PlaneBufferGeometry,
   Mesh
-} from "../../three/threejs/three.module.js";
+} from "../../3d/three.js/three.module.js";
 
 function Pass() {
   // if set to true, the pass is processed by the composer

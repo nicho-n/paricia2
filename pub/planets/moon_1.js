@@ -1,4 +1,4 @@
-import * as THREE from "../three/threejs/three.module.js";
+import * as THREE from "../3d/three.js/three.module.js";
 var textureLoader = new THREE.TextureLoader();
 
 var geometry = new THREE.SphereBufferGeometry(6791, 100, 50);

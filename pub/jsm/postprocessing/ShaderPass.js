@@ -2,7 +2,7 @@
  * @author alteredq / http://alteredqualia.com/
  */
 
-import { ShaderMaterial, UniformsUtils } from "../../three/threejs/three.module.js";
+import { ShaderMaterial, UniformsUtils } from "../../3d/three.js/three.module.js";
 import { Pass } from "../postprocessing/Pass.js";
 
 var ShaderPass = function(shader, textureID) {
