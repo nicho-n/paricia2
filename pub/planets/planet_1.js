@@ -1,4 +1,4 @@
-import * as THREE from "../three/three.module.js";
+import * as THREE from "../three/threejs/three.module.js";
 var textureLoader = new THREE.TextureLoader();
 
 var radius = 6371;

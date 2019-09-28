@@ -1,0 +1,22 @@
+<html>
+	<head>
+		<link type="text/css" rel="stylesheet" href="login.css"/>
+		<script src="/socket.io/socket.io.js"></script>
+		<script src = "login.js"></script>
+	</head>
+	<body>
+		<pre>
+    __               __     _          _____
+   / /   ____  _____/ /_   (_)___     / ___/____  ____ _________
+  / /   / __ \/ ___/ __/  / / __ \    \__ \/ __ \/ __ `/ ___/ _ \
+ / /___/ /_/ (__  ) /_   / / / / /   ___/ / /_/ / /_/ / /__/  __/
+/_____/\____/____/\__/  /_/_/ /_/   /____/ .___/\__,_/\___/\___/
+                                        /_/
+		</pre>
+		<div id="login-form">
+			Username: <input id="username-prompt" placeholder="please enter a username.."></input>
+			Password: <br><input id="password-prompt" type="password" placeholder="please enter your password.." ></input>
+			<button id="login-button" onclick=connect()>Log in</button>
+		</div>
+	</body>
+</html>

@@ -7,6 +7,7 @@ var AuthenticationService = function() {
             if (!player) return done();
             player.authenticate(login.password, function(err, isMatch){
                 if(err) throw err;
+                if(!isMatch) done(false);
                 done(player);
             });
         });

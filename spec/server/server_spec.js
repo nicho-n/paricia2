@@ -28,6 +28,5 @@ describe('Game Server', function () {
         expect(player).toBeNull();
         done();
       });
-
     });
 });

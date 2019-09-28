@@ -1,4 +1,4 @@
-import * as THREE from "./three/three.module.js";
+import * as THREE from "../threejs/three.module.js";
 var vertices = [];
 var vertex = new THREE.Vector3();
 var r = 6371, starsGeometry = new THREE.BufferGeometry(), starsMaterial, stars;

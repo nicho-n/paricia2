@@ -1,17 +1,17 @@
-import * as THREE from "./three/three.module.js";
-import { EffectComposer } from "./jsm/postprocessing/EffectComposer.js";
-import { RenderPass } from "./jsm/postprocessing/RenderPass.js";
-import { stars } from "./stars.js";
-import { planet_1 } from "./planets/planet_1.js";
-import { moon_1 } from "./planets/moon_1.js";
-import { FlyControls } from "./jsm/controls/FlyControls.js";
+import * as THREE from "./threejs/three.module.js";
+import { EffectComposer } from "../jsm/postprocessing/EffectComposer.js";
+import { RenderPass } from "../jsm/postprocessing/RenderPass.js";
+import { stars } from "./scene/stars.js";
+import { planet_1 } from "../planets/planet_1.js";
+import { moon_1 } from "../planets/moon_1.js";
+import { FlyControls } from "../jsm/controls/FlyControls.js";
 
 var position_indicator = document.getElementById("position_indicator");
 var rotationSpeed = 0.003;
 var scene, dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
-var loginWindow = new UIWindow("Hello", "login.html", "500px", "500px");
+var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
 
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
@@ -19,7 +19,6 @@ function init() {
   camera = new THREE.PerspectiveCamera(25, screen.height / screen.width, 50, 1e7);
   controls = new FlyControls(camera);
   clock = new THREE.Clock();
-
   scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x000000, 0.00000025);
   scene.add(dirLight);

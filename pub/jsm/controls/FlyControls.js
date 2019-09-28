@@ -2,7 +2,7 @@
  * @author James Baicoianu / http://www.baicoianu.com/
  */
 
-import { Quaternion, Vector3 } from "../../three/three.module.js";
+import { Quaternion, Vector3 } from "../../three/threejs/three.module.js";
 var FlyControls = function(object, domElement) {
   this.object = object;
 
