@@ -1,15 +1,29 @@
-var express = require("express");
+var express = require('express');
 var app = express();
-var http = require("http");
+var http = require('http');
 var server = http.Server(app);
-var io = require("socket.io")(server);
-var AuthenticationService = require("./service/AuthenticationService")
-var mongoose = require("mongoose");
+var io = require('socket.io')(server);
+var fs = require('fs');
+var AuthenticationService = require('./service/AuthenticationService')
+var mongoose = require('mongoose');
 
 mongoose.connect('mongodb://localhost/space', {useNewUrlParser: true, useUnifiedTopology: true});
 mongoose.set('useCreateIndex', true);
 
-app.use(express.static("pub"));
+app.use(express.static('pub'));
+
+function loadShip(player, done){
+  if (player.ship == 'default'){
+    fs.readFile('./objects/spaceship.obj', 'utf8', function(err, fileContents) {
+      if (err) {
+        done(err);
+      }
+      if (fileContents) {
+        done(fileContents);
+      }
+  });
+  }
+}
 
 io.on('connection', function(socket) {
   socket.on('login', function(login) {
@@ -19,14 +33,17 @@ io.on('connection', function(socket) {
         socket.emit('login bad')
       }
       else {
-        socket.emit('login ok', player);
+        loadShip(player, function(shipFile){
+          player.ship = shipFile;
+          socket.emit('login ok', player);
+        })
       }
     });
   });
 });
 
 server.listen(5000, function() {
-  console.log("Listening on port 5000!");
+  console.log('Listening on port 5000!');
 });
 
 

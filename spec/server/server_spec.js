@@ -1,4 +1,5 @@
 var io = require('socket.io-client')
+var fs = require('fs');
 describe('Game Server', function () {
     let socket;
 
@@ -17,10 +18,21 @@ describe('Game Server', function () {
       socket.emit('login', {username: 'testUser', password: "password"});
       socket.on('login ok', function(player){
         expect(player.username).toEqual('testUser');
-        expect(player.ship).toEqual('default');
         done();
       });
     });
+
+    it('should load a player', function(done) {
+      socket.emit('login', {username: 'testUser', password: "password"});
+      socket.on('login ok', function(player){
+        expect(player.username).toEqual('testUser');
+        fs.readFile('./objects/spaceship.obj', 'utf8', function(err, fileContents){
+          expect(fileContents).toEqual(player.ship);
+          done();
+        });
+      });
+
+    })
 
     it('should not log in a player with incorrect password', function(done) {
       socket.emit('login', {username: 'testUer', password: "passwor"});
