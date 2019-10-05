@@ -14,7 +14,7 @@ app.use(express.static('pub'));
 
 function loadShip(player, done){
   if (player.ship == 'default'){
-    fs.readFile('./objects/spaceship.obj', 'utf8', function(err, fileContents) {
+    fs.readFile('./assets/spaceship.obj', 'utf8', function(err, fileContents) {
       if (err) {
         done(err);
       }

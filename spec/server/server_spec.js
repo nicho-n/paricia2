@@ -26,7 +26,7 @@ describe('Game Server', function () {
       socket.emit('login', {username: 'testUser', password: "password"});
       socket.on('login ok', function(player){
         expect(player.username).toEqual('testUser');
-        fs.readFile('./objects/spaceship.obj', 'utf8', function(err, fileContents){
+        fs.readFile('./assets/spaceship.obj', 'utf8', function(err, fileContents){
           expect(fileContents).toEqual(player.ship);
           done();
         });
