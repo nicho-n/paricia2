@@ -15,7 +15,7 @@ describe('Game Server', function () {
 
     it('should log in a player', function(done) {
       socket.emit('login', {username: 'testUser', password: "password"});
-      socket.on('login', function(player){
+      socket.on('login ok', function(player){
         expect(player.username).toEqual('testUser');
         expect(player.ship).toEqual('default');
         done();
@@ -24,8 +24,8 @@ describe('Game Server', function () {
 
     it('should not log in a player with incorrect password', function(done) {
       socket.emit('login', {username: 'testUer', password: "passwor"});
-      socket.on('login', function(player){
-        expect(player).toBeNull();
+      socket.on('login bad', function(player){
+        expect(player).toBeUndefined();
         done();
       });
     });

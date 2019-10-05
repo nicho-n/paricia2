@@ -13,10 +13,9 @@ app.use(express.static("pub"));
 
 io.on('connection', function(socket) {
   socket.on('login', function(login) {
-    console.log(login);
     var authService = new AuthenticationService();
     authService.login(login, function(player){
-      if (player == null) {
+      if (!player) {
         socket.emit('login bad')
       }
       else {
