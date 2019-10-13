@@ -3,10 +3,10 @@ import { RenderPass } from "../jsm/postprocessing/RenderPass.js";
 import { stars } from "./scene/stars.js";
 import { planet_1 } from "../planets/planet_1.js";
 import { moon_1 } from "../planets/moon_1.js";
-
+import { scene } from "../3d/scene/scene.js"
 var position_indicator = document.getElementById("position_indicator");
 var rotationSpeed = 0.003;
-var scene, dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
+var dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
 var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
@@ -16,7 +16,6 @@ function init() {
   dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);
   camera = new THREE.PerspectiveCamera(25, screen.height / screen.width, 50, 1e7);
   clock = new THREE.Clock();
-  scene = new THREE.Scene();
   scene.fog = new THREE.FogExp2(0x000000, 0.00000025);
   scene.add(dirLight);
   scene.add(planet_1);

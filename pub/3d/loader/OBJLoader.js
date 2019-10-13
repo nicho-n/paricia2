@@ -2,9 +2,9 @@
  * @author mrdoob / http://mrdoob.com/
  */
 
-THREE.OBJLoader = function(manager) {
+OBJLoader = function(manager) {
 
-    this.manager = (manager !== undefined) ? manager : THREE.DefaultLoadingManager;
+    this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
 
     this.materials = null;
 
@@ -35,15 +35,15 @@ THREE.OBJLoader = function(manager) {
 
 };
 
-THREE.OBJLoader.prototype = {
+OBJLoader.prototype = {
 
-    constructor: THREE.OBJLoader,
+    constructor: OBJLoader,
 
     load: function(url, onLoad, onProgress, onError) {
 
         var scope = this;
 
-        var loader = new THREE.XHRLoader(scope.manager);
+        var loader = new XHRLoader(scope.manager);
         loader.setPath(this.path);
         loader.load(url, function(text) {
 
@@ -608,7 +608,7 @@ THREE.OBJLoader.prototype = {
 
         state.finalize();
 
-        var container = new THREE.Group();
+        var container = new Group();
         container.materialLibraries = [].concat(state.materialLibraries);
 
         for (var i = 0, l = state.objects.length; i < l; i++) {
@@ -621,13 +621,13 @@ THREE.OBJLoader.prototype = {
             // Skip o/g line declarations that did not follow with any faces
             if (geometry.vertices.length === 0) continue;
 
-            var buffergeometry = new THREE.BufferGeometry();
+            var buffergeometry = new BufferGeometry();
 
-            buffergeometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(geometry.vertices), 3));
+            buffergeometry.addAttribute('position', new BufferAttribute(new Float32Array(geometry.vertices), 3));
 
             if (geometry.normals.length > 0) {
 
-                buffergeometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(geometry.normals), 3));
+                buffergeometry.addAttribute('normal', new BufferAttribute(new Float32Array(geometry.normals), 3));
 
             } else {
 
@@ -637,7 +637,7 @@ THREE.OBJLoader.prototype = {
 
             if (geometry.uvs.length > 0) {
 
-                buffergeometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(geometry.uvs), 2));
+                buffergeometry.addAttribute('uv', new BufferAttribute(new Float32Array(geometry.uvs), 2));
 
             }
 
@@ -655,9 +655,9 @@ THREE.OBJLoader.prototype = {
                     material = this.materials.create(sourceMaterial.name);
 
                     // mtl etc. loaders probably can't create line materials correctly, copy properties to a line material.
-                    if (isLine && material && !(material instanceof THREE.LineBasicMaterial)) {
+                    if (isLine && material && !(material instanceof LineBasicMaterial)) {
 
-                        var materialLine = new THREE.LineBasicMaterial();
+                        var materialLine = new LineBasicMaterial();
                         materialLine.copy(material);
                         material = materialLine;
 
@@ -667,12 +667,12 @@ THREE.OBJLoader.prototype = {
 
                 if (!material) {
 
-                    material = (!isLine ? new THREE.MeshPhongMaterial() : new THREE.LineBasicMaterial());
+                    material = (!isLine ? new MeshPhongMaterial() : new LineBasicMaterial());
                     material.name = sourceMaterial.name;
 
                 }
 
-                material.shading = sourceMaterial.smooth ? THREE.SmoothShading : THREE.FlatShading;
+                material.shading = sourceMaterial.smooth ? SmoothShading : FlatShading;
 
                 createdMaterials.push(material);
 
@@ -691,12 +691,12 @@ THREE.OBJLoader.prototype = {
 
                 }
 
-                var multiMaterial = new THREE.MultiMaterial(createdMaterials);
-                mesh = (!isLine ? new THREE.Mesh(buffergeometry, multiMaterial) : new THREE.Line(buffergeometry, multiMaterial));
+                var multiMaterial = new MultiMaterial(createdMaterials);
+                mesh = (!isLine ? new Mesh(buffergeometry, multiMaterial) : new Line(buffergeometry, multiMaterial));
 
             } else {
 
-                mesh = (!isLine ? new THREE.Mesh(buffergeometry, createdMaterials[0]) : new THREE.Line(buffergeometry, createdMaterials[0]));
+                mesh = (!isLine ? new Mesh(buffergeometry, createdMaterials[0]) : new Line(buffergeometry, createdMaterials[0]));
             }
 
             mesh.name = object.name;
