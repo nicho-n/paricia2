@@ -1,4 +1,3 @@
-import * as THREE from "../three.js/three.module.js";
 var vertices = [];
 var vertex = new THREE.Vector3();
 var r = 6371, starsGeometry = new THREE.BufferGeometry(), starsMaterial, stars;
@@ -20,5 +19,3 @@ stars.rotation.y = Math.random() * 6;
 stars.rotation.z = Math.random() * 6;
 stars.scale.setScalar(20 * 10);
 stars.updateMatrix();
-
-export var stars = stars;

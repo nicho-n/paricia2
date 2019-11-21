@@ -1,7 +1,6 @@
-import {PlayerLoader} from "../../3d/player/PlayerLoader.js"
 var socket = io();
 
-export function connect() {
+function connect() {
     var username = document.getElementById("username-prompt").value;
     var password = document.getElementById("password-prompt").value;
     socket.emit('login', {"username": username, "password": password});

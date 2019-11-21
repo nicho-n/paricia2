@@ -1,4 +1,3 @@
-import * as THREE from "../3d/three.js/three.module.js";
 var textureLoader = new THREE.TextureLoader();
 
 var radius = 6371;
@@ -13,8 +12,7 @@ var materialNormalMap = new THREE.MeshPhongMaterial({
 });
 
 var geometry = new THREE.SphereBufferGeometry(radius, 100, 50);
-var meshPlanet = new THREE.Mesh(geometry, materialNormalMap);
-meshPlanet.rotation.y = 0;
-meshPlanet.rotation.z = tilt;
+var planet_1 = new THREE.Mesh(geometry, materialNormalMap);
+planet_1.rotation.y = 0;
+planet_1.rotation.z = tilt;
 
-export var planet_1 = meshPlanet;
