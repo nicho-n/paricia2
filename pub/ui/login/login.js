@@ -7,7 +7,7 @@ function connect() {
 }
 
 socket.on('login ok', function(player) {
-    PlayerLoader.load(player);
+    parent.PlayerLoader.load(player);
 })
 
 socket.on('login bad', function() {
