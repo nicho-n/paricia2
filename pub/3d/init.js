@@ -18,7 +18,7 @@ function init() {
   loginWindow.open();
   loginWindow.show();
 
-  dirLight.position.set(-100, 0, 100).normalize
+  dirLight.position.set(-100, 0, 100).normalize;
 
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);

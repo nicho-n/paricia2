@@ -4,7 +4,7 @@
 
 OBJLoader = function(manager) {
 
-    this.manager = (manager !== undefined) ? manager : DefaultLoadingManager;
+    this.manager = (manager !== undefined) ? manager : THREE.DefaultLoadingManager;
 
     this.materials = null;
 
@@ -43,7 +43,7 @@ OBJLoader.prototype = {
 
         var scope = this;
 
-        var loader = new XHRLoader(scope.manager);
+        var loader = new THREE.XHRLoader(scope.manager);
         loader.setPath(this.path);
         loader.load(url, function(text) {
 
@@ -113,7 +113,7 @@ OBJLoader.prototype = {
 
                         var previous = this._finalize(false);
 
-                        // New usemtl declaration overwrites an inherited material, except if faces were declared
+                        // new THREE.usemtl declaration overwrites an inherited material, except if faces were declared
                         // after the material, then it must be preserved for proper MultiMaterial continuation.
                         if (previous && (previous.inherited || previous.groupCount <= 0)) {
 
@@ -186,8 +186,8 @@ OBJLoader.prototype = {
                 };
 
                 // Inherit previous objects material.
-                // Spec tells us that a declared material must be set to all objects until a new material is declared.
-                // If a usemtl declaration is encountered while this new object is being parsed, it will
+                // Spec tells us that a declared material must be set to all objects until a new THREE.material is declared.
+                // If a usemtl declaration is encountered while this new THREE.object is being parsed, it will
                 // overwrite the inherited material. Exception being that there was already face declarations
                 // to the inherited material, then it will be preserved for proper MultiMaterial continuation.
 
@@ -476,7 +476,7 @@ OBJLoader.prototype = {
 
                 } else {
 
-                    throw new Error("Unexpected vertex/normal/uv line: '" + line + "'");
+                    throw new THREE.Error("Unexpected vertex/normal/uv line: '" + line + "'");
 
                 }
 
@@ -525,7 +525,7 @@ OBJLoader.prototype = {
 
                 } else {
 
-                    throw new Error("Unexpected face line: '" + line + "'");
+                    throw new THREE.Error("Unexpected face line: '" + line + "'");
 
                 }
 
@@ -600,7 +600,7 @@ OBJLoader.prototype = {
                 // Handle null terminated files without exception
                 if (line === '\0') continue;
 
-                throw new Error("Unexpected line: '" + line + "'");
+                throw new THREE.Error("Unexpected line: '" + line + "'");
 
             }
 
@@ -608,7 +608,7 @@ OBJLoader.prototype = {
 
         state.finalize();
 
-        var container = new Group();
+        var container = new THREE.Group();
         container.materialLibraries = [].concat(state.materialLibraries);
 
         for (var i = 0, l = state.objects.length; i < l; i++) {
@@ -621,13 +621,13 @@ OBJLoader.prototype = {
             // Skip o/g line declarations that did not follow with any faces
             if (geometry.vertices.length === 0) continue;
 
-            var buffergeometry = new BufferGeometry();
+            var buffergeometry = new THREE.BufferGeometry();
 
-            buffergeometry.addAttribute('position', new BufferAttribute(new Float32Array(geometry.vertices), 3));
+            buffergeometry.addAttribute('position', new THREE.BufferAttribute(new Float32Array(geometry.vertices), 3));
 
             if (geometry.normals.length > 0) {
 
-                buffergeometry.addAttribute('normal', new BufferAttribute(new Float32Array(geometry.normals), 3));
+                buffergeometry.addAttribute('normal', new THREE.BufferAttribute(new Float32Array(geometry.normals), 3));
 
             } else {
 
@@ -637,7 +637,7 @@ OBJLoader.prototype = {
 
             if (geometry.uvs.length > 0) {
 
-                buffergeometry.addAttribute('uv', new BufferAttribute(new Float32Array(geometry.uvs), 2));
+                buffergeometry.addAttribute('uv', new THREE.BufferAttribute(new Float32Array(geometry.uvs), 2));
 
             }
 
@@ -657,7 +657,7 @@ OBJLoader.prototype = {
                     // mtl etc. loaders probably can't create line materials correctly, copy properties to a line material.
                     if (isLine && material && !(material instanceof LineBasicMaterial)) {
 
-                        var materialLine = new LineBasicMaterial();
+                        var materialLine = new THREE.LineBasicMaterial();
                         materialLine.copy(material);
                         material = materialLine;
 
@@ -667,12 +667,12 @@ OBJLoader.prototype = {
 
                 if (!material) {
 
-                    material = (!isLine ? new MeshPhongMaterial() : new LineBasicMaterial());
+                    material = (!isLine ? new THREE.MeshPhongMaterial() : new THREE.LineBasicMaterial());
                     material.name = sourceMaterial.name;
 
                 }
 
-                material.shading = sourceMaterial.smooth ? SmoothShading : FlatShading;
+                material.shading = sourceMaterial.smooth ? THREE.SmoothShading : THREE.FlatShading;
 
                 createdMaterials.push(material);
 
@@ -691,12 +691,12 @@ OBJLoader.prototype = {
 
                 }
 
-                var multiMaterial = new MultiMaterial(createdMaterials);
-                mesh = (!isLine ? new Mesh(buffergeometry, multiMaterial) : new Line(buffergeometry, multiMaterial));
+                var multiMaterial = new THREE.MultiMaterial(createdMaterials);
+                mesh = (!isLine ? new THREE.Mesh(buffergeometry, multiMaterial) : new THREE.Line(buffergeometry, multiMaterial));
 
             } else {
 
-                mesh = (!isLine ? new Mesh(buffergeometry, createdMaterials[0]) : new Line(buffergeometry, createdMaterials[0]));
+                mesh = (!isLine ? new THREE.Mesh(buffergeometry, createdMaterials[0]) : new THREE.Line(buffergeometry, createdMaterials[0]));
             }
 
             mesh.name = object.name;

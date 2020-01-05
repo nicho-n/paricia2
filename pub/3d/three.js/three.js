@@ -24796,20 +24796,6 @@ THREE.OBJLoader.prototype = {
 
 			var renderTarget, forceClear;
 
-			if ( arguments[ 2 ] !== undefined ) {
-
-				console.warn( 'THREE.WebGLRenderer.render(): the renderTarget argument has been removed. Use .setRenderTarget() instead.' );
-				renderTarget = arguments[ 2 ];
-
-			}
-
-			if ( arguments[ 3 ] !== undefined ) {
-
-				console.warn( 'THREE.WebGLRenderer.render(): the forceClear argument has been removed. Use .clear() instead.' );
-				forceClear = arguments[ 3 ];
-
-			}
-
 			if ( ! ( camera && camera.isCamera ) ) {
 
 				console.error( 'THREE.WebGLRenderer.render: camera is not an instance of THREE.Camera.' );

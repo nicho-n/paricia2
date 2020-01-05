@@ -7,10 +7,6 @@ mongoose.set('useCreateIndex', true);
 describe('game database', function() { 
 
     it('creates a user', function(done) {
-        
-        Player.deleteOne({username: "testUser"}, function(err) {
-            if (err) throw err;
-        });
 
         var testPlayer = new Player({username: 'testUser', password: 'password'});    
 
