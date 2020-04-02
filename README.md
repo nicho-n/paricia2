@@ -16,5 +16,5 @@ $ npm test
 In your browser, visit http://localhost:5000
 
 ## Notes:
-Until an in-memory feature is added, you will need mongo running on your computer.
+Until an in-memory feature is added, you will need mongo running on your computer. <br>
 Tests will not pass unless mongo and the game server is running.
