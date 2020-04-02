@@ -10,8 +10,7 @@ describe('game database', function() {
 
         var testPlayer = new Player({username: 'testUser', password: 'password'});    
 
-        testPlayer.save(function(err, player) {
-            if (err) throw err;
+        testPlayer.save(function(player) {
             expect(player).not.toBeNull();
             done();
         });
