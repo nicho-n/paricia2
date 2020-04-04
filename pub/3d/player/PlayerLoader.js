@@ -3,7 +3,9 @@ var PlayerLoader = {
         var loader = new OBJLoader();
         var player =loader.parse(player.ship)
         player.add(camera);
-        camera.position.set(0, 70, 500);        
+        player.scale.set(6,6,6);
+        player.position.set(0,0,22890)
+        camera.position.set(0, 25, 250);        
         scene.add(player);
     },
 }
