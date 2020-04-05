@@ -1,6 +1,6 @@
 var position_indicator = document.getElementById("position_indicator");
 var rotationSpeed = 0.003;
-var dirLight, composer, controls, camera, renderer, clock, renderModel, camera, player;
+var dirLight, composer, controls, camera, renderer, clock, renderModel, camera, player, container;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
 var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
@@ -53,6 +53,7 @@ function render() {
   planet_1.rotation.y += rotationSpeed * delta;
   position_indicator.innerHTML = camera.position.x + "," + camera.position.y + "," + camera.position.z;
   composer.render(delta);
+  controls.update( delta );
 }
 
 init();
