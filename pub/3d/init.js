@@ -1,10 +1,11 @@
 var position_indicator = document.getElementById("position_indicator");
 var rotationSpeed = 0.003;
-var dirLight, composer, controls, camera, renderer, clock, renderModel, camera;
+var dirLight, composer, controls, camera, renderer, clock, renderModel, camera, player;
 var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
 var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
 var scene = new THREE.Scene();
+
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);

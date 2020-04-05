@@ -1,7 +1,7 @@
 var PlayerLoader = {
-    load: function(player) {
+    load: function(player1) {
         var loader = new OBJLoader();
-        var player =loader.parse(player.ship)
+        player = loader.parse(player1.ship)
         player.add(camera);
         player.scale.set(6,6,6);
         player.position.set(0,0,22890)
