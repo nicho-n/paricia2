@@ -8,7 +8,6 @@ var PlayerLoader = {
         camera.position.set(0, 25, 250);   
         controls = new THREE.FlyControls(player);    
         controls.movementSpeed = 1000;
-        //controls.domElement = container;
         controls.rollSpeed = Math.PI / 24;
         controls.autoForward = false;
         controls.dragToLook = false;
