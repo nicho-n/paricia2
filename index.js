@@ -12,6 +12,8 @@ mongoose.set('useCreateIndex', true);
 
 app.use(express.static('pub'));
 
+var players = {};
+
 function loadShip(player, done){
   if (player.ship == 'default'){
     fs.readFile('./assets/spaceship.obj', 'utf8', function(err, fileContents) {

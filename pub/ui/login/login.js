@@ -8,6 +8,7 @@ function connect() {
 
 socket.on('login ok', function(player) {
     parent.PlayerLoader.load(player);
+    parent.loginWindow.remove();
 })
 
 socket.on('login bad', function() {

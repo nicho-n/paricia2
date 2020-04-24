@@ -5,7 +5,6 @@ mongoose.connect('mongodb://localhost/space', {useNewUrlParser: true, useUnified
 mongoose.set('useCreateIndex', true);
 
 describe('game database', function() { 
-
     it('creates a user', function(done) {
 
         var testPlayer = new Player({username: 'testUser', password: 'password'});    

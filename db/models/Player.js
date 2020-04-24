@@ -6,7 +6,9 @@ var SALT_WORK_FACTOR = 10;
 var Player = new Schema({
     username: {type: String, unique: true, required: true, index: { unique: true }},
     password: {type: String, required: true},
-    ship: {type: String, default: 'default'}
+    ship: {type: String, default: 'default'},
+    position: {type: Schema.Types.Mixed, default: {x: 0, y:0, z: 22890}},
+    rotation: {type: Schema.Types.Mixed}
 });
 
 Player.pre('save', function(done) {

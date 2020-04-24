@@ -5,7 +5,7 @@ var SCREEN_HEIGHT = window.innerHeight;
 var SCREEN_WIDTH = window.innerWidth;
 var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
 var scene = new THREE.Scene();
-
+var players = {};
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);
@@ -33,6 +33,28 @@ function init() {
   document.body.appendChild(renderer.domElement);
   window.addEventListener("resize", onWindowResize, false);
 }
+
+function initPlayer(player) {
+  player.add(camera);
+  player.scale.set(7, 7, 7);
+  camera.position.set(0, 17, 125);
+  initPlayerControls();
+  scene.add(player);
+}
+
+function initOthers(otherPlayer){
+  players[otherPlayer.username] = otherPlayer
+  scene.add(otherPlayer)
+}
+
+function initPlayerControls(){
+  controls = new THREE.FlyControls(player);
+  controls.movementSpeed = 1000;
+  controls.rollSpeed = Math.PI / 24;
+  controls.autoForward = false;
+  controls.dragToLook = false;
+}
+
 
 function onWindowResize() {
   SCREEN_HEIGHT = window.innerHeight;
