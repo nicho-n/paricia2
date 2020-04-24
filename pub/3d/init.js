@@ -6,6 +6,7 @@ var SCREEN_WIDTH = window.innerWidth;
 var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280px");
 var scene = new THREE.Scene();
 var players = {};
+
 function init() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);
@@ -55,7 +56,6 @@ function initPlayerControls(){
   controls.dragToLook = false;
 }
 
-
 function onWindowResize() {
   SCREEN_HEIGHT = window.innerHeight;
   SCREEN_WIDTH = window.innerWidth;
@@ -75,7 +75,7 @@ function render() {
   planet_1.rotation.y += rotationSpeed * delta;
   position_indicator.innerHTML = camera.position.x + "," + camera.position.y + "," + camera.position.z;
   composer.render(delta);
-  controls.update( delta );
+  if (controls) controls.update( delta );
 }
 
 init();
