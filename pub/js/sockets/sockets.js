@@ -1,12 +1,14 @@
-var socket = io();
-
 socket.on('player joined', function(player){
     PlayerLoader.load(player);
+    console.log("adding join socket")
 });
 
 socket.on('online players', function(players){
-   for(const player in players) {
-       PlayerLoader.load(player);
+   for(const other in players) {
+        if (player.username != other.username) {
+            console.log("adding online players")
+            PlayerLoader.load(other, true);
+        }
    }
 });
 

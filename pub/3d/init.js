@@ -35,12 +35,13 @@ function init() {
   window.addEventListener("resize", onWindowResize, false);
 }
 
-function initPlayer(player) {
-  player.add(camera);
-  player.scale.set(7, 7, 7);
+function initPlayer(playerRes) {
+  player = playerRes;
+  player.obj.add(camera);
+  player.obj.scale.set(7, 7, 7);
   camera.position.set(0, 17, 125);
   initPlayerControls();
-  scene.add(player);
+  scene.add(player.obj);
 }
 
 function initOthers(otherPlayer){
@@ -49,7 +50,7 @@ function initOthers(otherPlayer){
 }
 
 function initPlayerControls(){
-  controls = new THREE.FlyControls(player);
+  controls = new THREE.FlyControls(player.obj);
   controls.movementSpeed = 1000;
   controls.rollSpeed = Math.PI / 24;
   controls.autoForward = false;
@@ -76,6 +77,9 @@ function render() {
   position_indicator.innerHTML = camera.position.x + "," + camera.position.y + "," + camera.position.z;
   composer.render(delta);
   if (controls) controls.update( delta );
+  if (player && player.position != player.obj.position){
+    broadcastPosition();
+  }
 }
 
 init();
