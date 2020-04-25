@@ -1,6 +1,10 @@
-socket.on('player joined', function(player){
-    PlayerLoader.load(player);
-    console.log("adding join socket")
+var socket = io();
+
+socket.on('player joined', function(newPlayer){
+    if (player) {
+        PlayerLoader.load(newPlayer);
+        console.log("adding join socket")    
+    }
 });
 
 socket.on('online players', function(players){
