@@ -7,7 +7,7 @@ function connect() {
 }
 
 socket.on('login ok', function(player) {
-    parent.PlayerLoader.load(player);
+    parent.PlayerLoader.load(player, false);
     parent.loginWindow.remove();
 })
 
