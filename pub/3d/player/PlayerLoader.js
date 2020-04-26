@@ -5,7 +5,7 @@ var PlayerLoader = {
         loader.load('./3d/assets/spaceship.obj', function(rendererPlayer) {
             player.obj = rendererPlayer;
             player.obj.position.set(playerInfo.position.x, playerInfo.position.y, playerInfo.position.z)
-            isOtherPlayer ?  initOtherPlayer(player) : initPlayer(player)
+            isOtherPlayer ?  initOthers(player) : initPlayer(player)
         });
     }
 }

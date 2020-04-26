@@ -2,7 +2,7 @@ var socket = io();
 
 socket.on('player joined', function(newPlayer){
     if (player) {
-        PlayerLoader.load(newPlayer);
+        PlayerLoader.load(newPlayer, true);
     }
 });
 
@@ -15,8 +15,10 @@ socket.on('online players', function(players){
 });
 
 socket.on('position change', function(username, position, rotation){
-    players[username].position = position;
-    players[username].rotation = rotation;
+    if (players[username]){
+        players[username].position = position;
+        players[username].rotation = rotation;    
+    }
 })
 
 function broadcastPosition(){

@@ -22,14 +22,11 @@ describe('Game Server', function () {
       });
     });
 
-    it('should load a player', function(done) {
+    it('should find a player', function(done) {
       socket.emit('login', {username: 'testUser', password: "password"});
       socket.on('login ok', function(player){
         expect(player.username).toEqual('testUser');
-        fs.readFile('./assets/spaceship.obj', 'utf8', function(err, fileContents){
-          expect(fileContents).toEqual(player.ship);
-          done();
-        });
+        done();
       });
 
     })

@@ -45,8 +45,8 @@ function initPlayer(playerRes) {
 }
 
 function initOthers(otherPlayer){
-  players[otherPlayer.username] = otherPlayer
-  scene.add(otherPlayer)
+  players[otherPlayer.username] = otherPlayer;
+  scene.add(otherPlayer.obj);
 }
 
 function initPlayerControls(){
