@@ -16,7 +16,7 @@ socket.on('online players', function(players){
 
 socket.on('position change', function(username, position, rotation){
     if (players[username]){
-        players[username].position = position;
+        players[username].obj.position.copy(position);
         players[username].rotation = rotation;    
     }
 })

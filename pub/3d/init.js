@@ -77,7 +77,8 @@ function render() {
   position_indicator.innerHTML = camera.position.x + "," + camera.position.y + "," + camera.position.z;
   composer.render(delta);
   if (controls) controls.update( delta );
-  if (player && player.position != player.obj.position){
+  if (player && !player.position.equals(player.obj.position)){
+    player.position = player.obj.position.clone();
     broadcastPosition();
   }
 }
