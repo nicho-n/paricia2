@@ -14,11 +14,11 @@ app.use(express.static('pub'));
 
 var players = {}
 
-io.on('connection', function(socket) {
+io.on('connection', (socket) => {
   console.log("new connection", socket.id)
-  socket.on('login', function(login) {
+  socket.on('login', (login) => {
     var authService = new AuthenticationService();
-    authService.login(login, function(player) { 
+    authService.login(login, (player) => { 
       if (!player) {
         socket.emit('login bad')
       }
@@ -31,7 +31,7 @@ io.on('connection', function(socket) {
     })
   });
   
-  socket.on('position change', function(username, position, rotation){
+  socket.on('position change', (username, position, rotation) => {
     players[username].position = position;
     players[username].rotation = rotation;
     socket.broadcast.emit('position change', username, position, rotation)
@@ -39,8 +39,6 @@ io.on('connection', function(socket) {
 
 });
 
-server.listen(5000, function() {
+server.listen(5000, () => {
   console.log('Listening on port 5000!');
 });
-
-
