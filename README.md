@@ -1,5 +1,5 @@
 # paricia2
-An open world, multiplayer space-trading simulator.
+An open world, multiplayer space-trading simulator. <br>
 Features are being rewritten from https://github.com/nicho-n/paricia0/tree/master/space (spaghetti code)
 
 ## Installation:
