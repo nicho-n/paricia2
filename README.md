@@ -2,7 +2,7 @@
 An open world, multiplayer space-trading simulator. <br><br>
 Features are being rewritten from https://github.com/nicho-n/paricia0/tree/master/space 
 <br><br>
-<img src="https://raw.githubusercontent.com/nicho-n/paricia/master/screenshot.png" width="800"></img>
+<img src="https://raw.githubusercontent.com/nicho-n/paricia/master/screenshot.png" width="500"></img>
 
 ## Installation:
 ```
