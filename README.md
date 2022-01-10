@@ -1,6 +1,7 @@
 # paricia2
 An open world, multiplayer space-trading simulator. <br><br>
 Features are being rewritten from https://github.com/nicho-n/paricia0/tree/master/space 
+<img src="https://raw.githubusercontent.com/nicho-n/paricia/master/screenshot.png"></img>
 
 ## Installation:
 ```
@@ -20,4 +21,3 @@ In your browser, visit http://localhost:5000
 Until an in-memory feature is added, you will need mongo running on your computer. <br>
 Tests will not pass unless mongo and the game server is running.
 
-<img src="https://raw.githubusercontent.com/nicho-n/paricia/master/screenshot.png"></img>
