@@ -7,20 +7,25 @@ var loginWindow = new UIWindow("Hello", "../ui/login/login.html", "540px", "280p
 var scene = new THREE.Scene();
 var players = {};
 
+
 function init() {
+  start3dRendering();
+  loginWindow.open();
+  loginWindow.show();
+}
+
+function start3dRendering() {
   renderer = new THREE.WebGLRenderer({ antialias: true });
   dirLight = new THREE.DirectionalLight(0xaaaaaa, 0.8);
+  dirLight.position.set(-100, 0, 100).normalize;
   camera = new THREE.PerspectiveCamera(25, screen.height / screen.width, 50, 1e7);
   clock = new THREE.Clock();
+ 
   scene.fog = new THREE.FogExp2(0x000000, 0.00000025);
   scene.add(dirLight);
   scene.add(planet_1);
   scene.add(moon_1);
   scene.add(stars);
-  loginWindow.open();
-  loginWindow.show();
-
-  dirLight.position.set(-100, 0, 100).normalize;
 
   renderer.setPixelRatio(window.devicePixelRatio);
   renderer.setSize(SCREEN_WIDTH, SCREEN_HEIGHT);
