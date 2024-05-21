@@ -10,8 +10,8 @@ $ docker compose up --build
 ```
 
 ## Testing:
-```
 In the resulting docker container, run
+```
 $ npm test
 ```
 
