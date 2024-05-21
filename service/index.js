@@ -4,10 +4,15 @@ var http = require('http');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
-var AuthenticationService = require('./service/AuthenticationService')
+var AuthenticationService = require('./AuthenticationService')
 var mongoose = require('mongoose');
 
-mongoose.connect('mongodb://localhost/space', {useNewUrlParser: true, useUnifiedTopology: true});
+mongoose.connect('mongodb://host.docker.internal:27017/paricia2', {useNewUrlParser: true, useUnifiedTopology: true}).then(() => {
+    console.log('Connected to MongoDB');
+})
+.catch((error) => {
+    console.error('Error connecting to MongoDB:', error);
+});
 mongoose.set('useCreateIndex', true);
 
 app.use(express.static('pub'));

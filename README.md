@@ -6,19 +6,15 @@ Features are being rewritten from https://github.com/nicho-n/paricia0/tree/maste
 
 ## Installation:
 ```
-$ npm install
-$ npm start 
+$ docker compose up --build
 ```
 
 ## Testing:
 ```
+In the resulting docker container, run
 $ npm test
 ```
 
 ## Usage:
 In your browser, visit http://localhost:5000
-
-## Notes:
-Until an in-memory feature is added, you will need mongo running on your computer. <br>
-Tests will not pass unless mongo and the game server is running.
 

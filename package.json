@@ -2,10 +2,10 @@
   "name": "space",
   "version": "1.0.0",
   "description": "An open world, multiplayer space-trading simulator. ## Installation: ``` $ npm install $ npm start  ```",
-  "main": "index.js",
+  "main": "service/index.js",
   "scripts": {
-    "test": "jasmine",
-    "start": "node index.js"
+    "start": "node service/index.js",
+    "test": "jasmine"
   },
   "repository": {
     "type": "git",
