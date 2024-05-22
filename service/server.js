@@ -11,16 +11,23 @@ var dbConnect = function () {
     return mongoose.connect('mongodb://host.docker.internal:27017/paricia2', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 }
 
-var runServer = async function (port = 5000, start = false) {
+var runServer = function (port = 5000, start = false) {
     let players = {};
     dbConnect();
     app.use(express.static('pub'));
 
+    function updatePosition(username, position, rotation) {
+        players[username].position = position;
+        players[username].rotation = rotation;
+        socket.broadcast.emit('position change', username, position, rotation)
+    }
+
     io.on('connection', (socket) => {
         console.log("new connection", socket.id)
-        socket.on('login', (login) => {
+        
+        socket.on('login', (playerCredentials) => {
             var authService = new AuthenticationService();
-            authService.login(login, (player) => {
+            authService.login(playerCredentials, (player) => {
                 if (!player) {
                     socket.emit('login bad')
                 }
@@ -34,13 +41,12 @@ var runServer = async function (port = 5000, start = false) {
         });
 
         socket.on('position change', (username, position, rotation) => {
-            players[username].position = position;
-            players[username].rotation = rotation;
-            socket.broadcast.emit('position change', username, position, rotation)
+            updatePosition(username, position, rotation);
         });
+
     });
 
-    server.listen(port, () => {
+    return server.listen(port, () => {
         console.log(`Listening on port ${port}!`);
     });
 }

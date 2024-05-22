@@ -19,7 +19,16 @@ socket.on('position change', function(username, position, rotation){
         players[username].obj.position.copy(position);
         players[username].rotation = rotation;    
     }
-})
+});
+
+socket.on('login ok', function(player) {
+    PlayerLoader.load(player, false);
+    loginWindow.remove();
+});
+
+socket.on('login bad', function() {
+    console.log("bad!!")
+});
 
 function broadcastPosition(){
     socket.emit('position change', player.username, player.position, player.rotation)
