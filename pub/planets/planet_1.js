@@ -1,7 +1,7 @@
 var textureLoader = new THREE.TextureLoader();
 
 var radius = 6371;
-var tilt = 0.41;
+var tilt = 0.75;
 var cloudsScale = 1.005;
 
 var materialNormalMap = new THREE.MeshPhongMaterial({

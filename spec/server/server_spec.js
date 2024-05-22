@@ -1,10 +1,12 @@
 var io = require('socket.io-client')
 var fs = require('fs');
+const {dbConnect, runServer, stopServer} = require('../../service/server');
+
 describe('Game Server', function () {
     let socket;
-
+    runServer(5001);
     beforeEach(function() {
-      socket = io.connect('http://host.docker.internal:5000', {'force new connection': true});
+      socket = io.connect('http://localhost:5001', {'force new connection': true});
     });
 
     it('should form a connection', function (done) {
