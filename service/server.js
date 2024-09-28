@@ -54,7 +54,7 @@ var runServer = function (port = 5000, start = false) {
             });
         });
 
-        socket.on('chatMessage', function (message) {
+        socket.on('chat message', function (message) {
             io.emit('message', message);
         });
     
@@ -64,7 +64,7 @@ var runServer = function (port = 5000, start = false) {
             socket.broadcast.emit('player joined', newPlayer);
         });
     
-        socket.on('newuser', function (username) {
+        socket.on('new user', function (username) {
             io.emit('message', username + ' has joined the game.');
         });
     
