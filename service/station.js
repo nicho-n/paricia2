@@ -19,7 +19,6 @@ socket.on('load inventory', function (inventory) {
         if (activeTab = "buyTab")
             _this.loadBuyTab();
     }
-    //players[username] = 0;
 });
 
 slider.oninput = function () {
@@ -152,8 +151,6 @@ class Station {
                 slider.max = p.inventory[selectedItem.name].quantity;
                 socket.emit('update commodities', _this.commodities);
             };
-
-
         }
     }
 
