@@ -16,7 +16,7 @@ var runServer = function (port = 5000, start = false) {
     dbConnect();
     app.use(express.static('pub'));
 
-    function updatePosition(username, position, rotation) {
+    function updatePosition(username, position, rotation, players) {
         players[username].position = position;
         players[username].rotation = rotation;
         socket.broadcast.emit('position change', username, position, rotation)
@@ -41,7 +41,7 @@ var runServer = function (port = 5000, start = false) {
         });
 
         socket.on('position change', (username, position, rotation) => {
-            updatePosition(username, position, rotation);
+            updatePosition(username, position, rotation, players);
         });
 
     });
