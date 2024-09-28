@@ -1,3 +1,3 @@
-var {runServer, dbConnect, stopServer} = require('./server')
+var {runServer} = require('./server')
 let port = 5000;
-let server = runServer(port, true);
+runServer(port, true);
