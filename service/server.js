@@ -4,12 +4,16 @@ var http = require('http');
 var server = http.Server(app);
 var io = require('socket.io')(server);
 var fs = require('fs');
-var AuthenticationService = require('./AuthenticationService')
+var AuthenticationService = require('./modules/AuthenticationService')
+var CommodityService = require('./modules/CommodityService')
+
 var mongoose = require('mongoose');
 
 var dbConnect = function () {
     return mongoose.connect('mongodb://host.docker.internal:27017/paricia2', { useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true })
 }
+
+var commodityService = new CommodityService();
 
 var runServer = function (port = 5000, start = false) {
     let players = {};
@@ -44,6 +48,26 @@ var runServer = function (port = 5000, start = false) {
             updatePosition(username, position, rotation, players);
         });
 
+        socket.on('transaction', function (transaction) {
+            commodityService.handle(transaction, (inventory) => {
+                socket.emit('load inventory', inventory);
+            });
+        });
+
+        socket.on('chatMessage', function (message) {
+            io.emit('message', message);
+        });
+    
+        socket.on('player joined', function (newPlayer) {
+            connectedPlayers[newPlayer.username] = newPlayer;
+            clients[socket.id] = newPlayer;
+            socket.broadcast.emit('player joined', newPlayer);
+        });
+    
+        socket.on('newuser', function (username) {
+            io.emit('message', username + ' has joined the game.');
+        });
+    
     });
 
     return server.listen(port, () => {

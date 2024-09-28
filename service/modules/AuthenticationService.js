@@ -1,4 +1,4 @@
-var Player = require("./db/schema/Player")
+var Player = require("../db/schema/Player")
 
 var AuthenticationService = function() {
     this.login = function(login, done) {
