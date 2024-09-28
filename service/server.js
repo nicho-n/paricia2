@@ -49,9 +49,7 @@ var runServer = function (port = 5000, start = false) {
         });
 
         socket.on('transaction', function (transaction) {
-            commodityService.handle(transaction, (inventory) => {
-                socket.emit('load inventory', inventory);
-            });
+            commodityService.handle(transaction);
         });
 
         socket.on('chat message', function (message) {
